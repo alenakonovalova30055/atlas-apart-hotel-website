@@ -208,7 +208,7 @@ async function strapiRequest<T>(endpoint: string): Promise<T | null> {
 
   try {
     const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 10000)
+    const timeout = setTimeout(() => controller.abort(), 30000)
     const response = await fetch(url, {
       headers,
       cache: 'no-store',

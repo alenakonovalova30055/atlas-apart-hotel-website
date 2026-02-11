@@ -41,6 +41,10 @@ export function BookingForm({
   const { data: rawApts } = useSWR('/api/apartments', fetcher, {
     fallbackData: fallbackApts,
     revalidateOnFocus: false,
+    revalidateIfStale: false,
+    dedupingInterval: 60000,
+    focusThrottleInterval: 300000,
+    errorRetryCount: 2,
   })
   const apartments = Array.isArray(rawApts) && rawApts.length > 0 ? rawApts : fallbackApts
   // Только доступные апартаменты
