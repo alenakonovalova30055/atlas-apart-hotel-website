@@ -142,6 +142,10 @@ export function BookingSearch() {
   const { data: rawData } = useSWR('/api/apartments', fetcher, {
     fallbackData: fallbackData,
     revalidateOnFocus: false,
+    revalidateIfStale: false,
+    dedupingInterval: 60000,
+    focusThrottleInterval: 300000,
+    errorRetryCount: 2,
   })
   const allApartmentsData = Array.isArray(rawData) && rawData.length > 0 ? rawData : fallbackData
   const availableApartments = allApartmentsData.filter((apt: any) => apt.isAvailable !== false)
