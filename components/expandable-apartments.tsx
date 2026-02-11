@@ -11,6 +11,10 @@ export function ExpandableApartments() {
   const { data } = useSWR('/api/apartments', fetcher, {
     fallbackData: fallbackApartments,
     revalidateOnFocus: false,
+    revalidateIfStale: false,
+    dedupingInterval: 60000,
+    focusThrottleInterval: 300000,
+    errorRetryCount: 2,
   })
   const allApartments = Array.isArray(data) && data.length > 0 ? data : fallbackApartments
   const [showAll, setShowAll] = useState(false)
