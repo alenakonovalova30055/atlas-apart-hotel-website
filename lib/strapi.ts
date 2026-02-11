@@ -9,7 +9,7 @@ interface StrapiApartment {
   slug?: string
   description?: string
   shortDescription?: string
-  rooms?: string
+  rooms?: string | number
   image?: string | string[]
   price?: number
   size?: string | number
@@ -24,7 +24,6 @@ interface StrapiApartment {
   bedroom?: number
   bathroom?: number
   roomCount?: number
-  rooms?: number
   rules?: { checkIn: string; checkOut: string; smoking: boolean; pets: boolean; description: string }
   bonuses?: Array<{ title: string; description: string; included: boolean }>
   bonus?: Array<{ Title: string; description: string; included: boolean }>
